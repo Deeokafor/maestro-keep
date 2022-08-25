@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="/stylesheets/style.css" type="text/css" rel="stylesheet">
+    <!--<script src="/script.js"></script>-->
+  </head>
+
+  <body>
+
+    <!-- login form -->
+    <form method="GET">
+      <h1 class="form_header">Welcome back</h1>
+      <h2 class="form_header2">Log into your account</h2>
+
+
+      <label>
+        Email or Username
+      </label>
+      <input type="email" id="email" class="email" placeholder="Enter your email or username or userId" name="password" value="">
+
+      <label>
+        <div>Password</div>
+        <a href="#"><div class="greyed-text forgot_password">Forgot password?</div></a>
+      </label>
+      <input type="password" id="password" class="password" placeholder="Enter your password" name="password" value="">
+      
+      <input type="button" id="loginBtn" value="Login now">
+
+      <div class="reg_link greyed-text">Not registered yet? <span><a href="/signup.html">Sign up</a></span><span><img src="/feather-icons-white/arrow-right.svg" /></a></span></div>
+    </form>
+
+    <!--This houses the alert the user gets -->
+    <!-- message alert -->
+    <div id="alert_modal">
+      <div id="notifier"><img src="/feather-icons-white/alert-octagon.svg" /></div>
+      <div id="message-core">MESSAGE ALERT!!!</div>
+      <button id="close-button"><img src="/feather-icons-white/x.svg" /></button>
+    </div>
+    <!-- message alert -->
+
+    <script src="/scripts/validate_user.js"></script>
+  </body>
+
+</html>

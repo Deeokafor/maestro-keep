@@ -6,19 +6,19 @@
 
 @font-face {
     font-family: br-firma;
-    src: url(/fonts/br-firma-cufonfonts/BR\ Firma\ Bold.otf);
+    src: url(../fonts/br-firma-cufonfonts/BR\ Firma\ Bold.otf);
     font-weight: bold;
 }
 
 @font-face {
     font-family: br-firma;
-    src: url(/fonts/br-firma-cufonfonts/BR\ Firma\ Medium.otf);
+    src: url(../fonts/br-firma-cufonfonts/BR\ Firma\ Medium.otf);
     font-weight: normal;
 }
 
 @font-face {
     font-family: br-firma;
-    src: url(/fonts/br-firma-cufonfonts/BR\ Firma\ Light.otf);
+    src: url(../fonts/br-firma-cufonfonts/BR\ Firma\ Light.otf);
     font-weight: lighter;
 }
 

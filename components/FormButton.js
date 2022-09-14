@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const FormButton = ({ title }) => {
+const FormButton = ({ title, onPressHandler }) => {
   return (
     <View>
       <Pressable
@@ -12,6 +12,7 @@ const FormButton = ({ title }) => {
             marginTop: 18,
           },
         ]}
+        onPress={onPressHandler}
       >
         <Text style={[styles.formText, { fontSize: 18, textAlign: "center" }]}>
           {title}

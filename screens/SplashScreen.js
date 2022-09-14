@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 const SplashScreen = () => {
   // the fonts i want to use
@@ -24,6 +25,7 @@ const SplashScreen = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="light"/>
       <Text style={styles.title}>Maestro Keep</Text>
       <Text style={styles.subtitle}>version 1.0 Beta</Text>
     </View>

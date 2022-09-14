@@ -1,32 +1,58 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
+import { Controller } from "react-hook-form";
 
 const FormField = ({
   formTitle,
   secondTitle,
   placeholder,
   secureTextEntry,
+  name,
+  control,
+  rules = {},
 }) => {
   return (
-    <View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Text style={styles.formText}>{formTitle}</Text>
-        <Pressable>
-          <Text style={[styles.formText, { opacity: 0.3 }]}>{secondTitle}</Text>
-        </Pressable>
-      </View>
-      <TextInput
-        placeholder={placeholder}
-        style={styles.input}
-        secureTextEntry={secureTextEntry}
-      />
-    </View>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({
+        field: { value, onChange, onBlur },
+        fieldState: { error },
+      }) => (
+        <>
+          <View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.formText}>{formTitle}</Text>
+              <Pressable>
+                <Text style={[styles.formText, { opacity: 0.3 }]}>
+                  {secondTitle}
+                </Text>
+              </Pressable>
+            </View>
+            <TextInput
+              placeholder={placeholder}
+              style={styles.input}
+              secureTextEntry={secureTextEntry}
+              value={value}
+              onBlur={onBlur}
+              onChangeText={(value) => onChange(value)}
+            />
+          </View>
+          {error && (
+            <Text style={{ color: "red", alignSelf: "stretch", fontSize: 12 }}>
+              {error.message || "error"}
+            </Text>
+          )}
+        </>
+      )}
+    />
   );
 };
 
@@ -38,9 +64,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 6,
     backgroundColor: "#ccc",
-    marginBottom: 12,
   },
   formText: {
+    marginTop: 12,
     fontFamily: "fira-bold",
     color: "#ccc",
     marginBottom: 4,

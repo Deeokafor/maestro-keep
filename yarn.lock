@@ -4361,6 +4361,11 @@ md5hex@^1.0.0:
   resolved "https://registry.yarnpkg.com/md5hex/-/md5hex-1.0.0.tgz#ed74b477a2ee9369f75efee2f08d5915e52a42e8"
   integrity sha512-c2YOUbp33+6thdCUi34xIyOU/a7bvGKj/3DB1iaPMTuPHf/Q2d5s4sn1FaCOO43XkXggnb08y5W2PU8UNYNLKQ==
 
+meaningful-string@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/meaningful-string/-/meaningful-string-1.3.2.tgz#92e89de6563ab1d40470afa25fcac291f3a571dd"
+  integrity sha512-ALU7YjgBkXWXVpC9XoifJw0e62fHOA22udLGGCuxx6vhyfakG+YfpsZgoeZFcGa34X+x2phYtJbL9ZB0GNH2IQ==
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"

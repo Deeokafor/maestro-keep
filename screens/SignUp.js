@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
@@ -16,14 +16,19 @@ import { useForm } from "react-hook-form";
 import FormField from "../components/FormField";
 import FormButton from "../components/FormButton";
 
+const generate = require('meaningful-string');
+
 const SignUp = () => {
+  const [showGenPassword, setShowGenPassword] = useState(false);
+  const [randomPassword, setRandomPassword] = useState("");
+
   // fetching the navigation
   const navigation = useNavigation();
 
   //  react-hook-form init
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
-      full_name: "",
+      email: "",
       password: "",
       confirm_password: "",
     },
@@ -43,9 +48,26 @@ const SignUp = () => {
   // watch for the password
   const pwd = watch("password");
 
+  // REGULAR EXPRESSION FOR THE EMAIL VALIDATION
+  const EMAIL_REGEX =
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
   // sign up user
   const signUpUser = (data) => {
     console.log("Hello world");
+  };
+
+  // generate random passwords
+  const generateRandomPassword = () => {
+    // "worklet";
+    setShowGenPassword(!showGenPassword);
+    var options = {
+      "min":8,
+      "max":12,
+      "smallWithNumbers":true
+    }
+    const randomsPwd = generate.random(options)
+    setRandomPassword(randomsPwd)
   };
 
   return (
@@ -64,24 +86,21 @@ const SignUp = () => {
         {/* housing the form */}
         <View style={styles.form}>
           <FormField
-            name={"full_name"}
+            name={"email"}
             control={control}
-            formTitle={"Full name"}
-            placeholder={"Enter your full"}
+            formTitle={"Email"}
+            placeholder={"Enter your email"}
             rules={{
-              required: "full name is required",
-              minLength: {
-                value: 2,
-                message: "Must be more than 2 characters long",
-              },
+              required: "Email is required",
+              pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
             }}
           />
           <FormField
             name={"password"}
             control={control}
             formTitle={"Password"}
-            placeholder={"Password"}
             secondTitle={"Generate password?"}
+            placeholder={"Password"}
             secureTextEntry={true}
             rules={{
               required: "Password is required",
@@ -90,7 +109,29 @@ const SignUp = () => {
                 message: "Password should be at least 8 characters long",
               },
             }}
+            onPressHandler={generateRandomPassword}
           />
+          {/* show the random password for the user when the button is tapped on clicked on */}
+          {showGenPassword && (
+            <Text
+              style={{ color: "#ccc", paddingTop: 10, fontFamily: "fira-bold" }}
+            >
+              Your generated password is:&nbsp;
+              <Text
+              selectable={true}
+              selectionColor={"white"}
+                style={{
+                  color: "red",
+                  paddingTop: 10,
+                  fontFamily: "fira-bold",
+                  fontSize: 20,
+                }}
+              >
+                {randomPassword}
+              </Text>
+            </Text>
+          )}
+
           <FormField
             name={"confirm_password"}
             control={control}

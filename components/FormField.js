@@ -3,6 +3,7 @@ import React from "react";
 import { Controller } from "react-hook-form";
 
 const FormField = ({
+  onPressHandler,
   formTitle,
   secondTitle,
   placeholder,
@@ -30,7 +31,7 @@ const FormField = ({
               }}
             >
               <Text style={styles.formText}>{formTitle}</Text>
-              <Pressable>
+              <Pressable onPress={onPressHandler}>
                 <Text style={[styles.formText, { opacity: 0.3 }]}>
                   {secondTitle}
                 </Text>
